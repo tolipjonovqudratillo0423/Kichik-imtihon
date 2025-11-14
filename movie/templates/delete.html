@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  {% load static %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>O'chirishni tasdiqlash</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand">
+        <div class="logo">OM</div>
+        <div>
+          <h2 style="margin:0">Filmni o'chirish</h2>
+        </div>
+      </div>
+      <div class="nav"><a href="detail.html" class="small-btn">Orqaga</a></div>
+    </div>
+
+    <div class="form-card">
+      <div class="warn">
+        <h3 style="margin:0">Diqqat!</h3>
+        <p style="margin:8px 0 0">
+          Siz quyidagi filmni o'chirmoqchisiz — bu amal qaytarilmas bo'lishi mumkin.
+        </p>
+      </div>
+
+      <div style="margin-top:16px">
+        <p><strong>Movie Title</strong> — 2024 · Drama</p>
+
+        <div style="display:flex;gap:10px;justify-content:flex-end">
+          <a href="detail.html" class="small-btn">Bekor qilish</a>
+
+          <!-- O'chirish formasi: backend yo'nalishini action-ga qo'ying (masalan /movies/123/delete) -->
+          <form action="#" method="post" style="display:inline" id="deleteForm">
+            <!-- Agar Django ishlatayotgan bo'lsangiz, shu yerga CSRF token qo'ying -->
+            <!-- {% csrf_token %} -->
+
+            <button class="button" type="submit">Ha, o'chirish</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Ixtiyoriy: formni yuborishdan oldin brauzer tasdiqlash oynasi -->
+  <script>
+    document.getElementById('deleteForm').addEventListener('submit', function(e) {
+      var ok = confirm("Siz rostdan ham filmni o'chirmoqchimisiz? Bu amal qaytarilmas bo'lishi mumkin.");
+      if (!ok) {
+        e.preventDefault();
+      }
+    });
+  </script>
+</body>
+</html>

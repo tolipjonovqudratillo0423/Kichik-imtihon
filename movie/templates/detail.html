@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="uz">
+<head>
+    {% load static %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Movie Detail</title>
+<link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+<div class="container">
+<div class="header">
+<div class="brand"><div class="logo">OM</div><div><h2 style="margin:0">Movie Title</h2><div style="color:var(--muted);font-size:13px">2024 · Drama</div></div></div>
+<div class="nav"><a href="index.html" class="small-btn">Ro'yxat</a></div>
+</div>
+
+
+<div class="detail-wrap">
+<img class="poster-large" src="https://via.placeholder.com/600x900?text=Poster" alt="Poster">
+
+
+<div>
+<h3>Tavsif</h3>
+<p style="color:var(--muted)">Bu yerda filmning to'liq tavsifi bo'ladi. Yaratilgan yili, rejissyor, akterlar va boshqa meta ma'lumotlar shu yerda joylashadi.</p>
+
+
+<div class="attr"><strong>Rejissyor:</strong> Ism Familiya</div>
+<div class="attr"><strong>Akterlar:</strong> Aktyor1, Aktyor2</div>
+<div class="attr"><strong>Muddat:</strong> 2h 10m</div>
+
+
+<div style="margin-top:18px">
+<a href="update.html" class="small-btn">Edit</a>
+<a href="delete.html" class="small-btn">Delete</a>
+</div>
+</div>
+</div>
+
+
+</div>
+</body>
+</html>

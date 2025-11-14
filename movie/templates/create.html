@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="uz">
+<head>
+    {% load static %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Online Movies — Yangi film</title>
+<link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+<div class="container">
+<div class="header">
+<div class="brand"><div class="logo">OM</div><div><h2 style="margin:0">Yangi film qo'shish</h2></div></div>
+<div class="nav"><a href="{% url 'home' %}" class="small-btn">Orqaga</a></div>
+</div>
+
+
+<div class="form-card">
+<form action="{% url 'create' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+   
+<div class="form-row">
+<div class="field">
+<label for="title">Sarlavha</label>
+<input id="title" name="title" placeholder="Marvel" type="text" required>
+</div>
+<div class="field">
+<label for="year">Chiqarilgan Sana</label>
+<input id="year" placeholder="DD.MM.YYYY" name="date" type="datetime-local" min="1" max="10000000000">
+</div>
+</div>
+
+
+<div class="field">
+<label for="genre">Janr</label>
+<input id="genre" placeholder="drama" name="genre" type="text">
+</div>
+
+
+<div class="field">
+<label for="desc">Tavsif </label>
+<textarea id="desc" placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta eos a repellendus quidem, officia amet laborum esse necessitatibus eius ipsam expedita neque consectetur libero aliquid iure modi. Repellat, officia quod." name="desc"></textarea>
+</div>
+
+
+<div class="field">
+<label for="poster">Poster (rasm)</label>
+<input id="poster"  name="image" type="file" >
+</div>
+
+
+<div style="display:flex;gap:10px;justify-content:flex-end;margin-top:12px">
+<a href="{% url 'home' %}" class="small-btn">Bekor qilish</a>
+<button class="button" type="submit">Saqlash</button>
+</div> 
+</form>
+</div>
+</div>
+</body>
+</html>

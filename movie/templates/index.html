@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="uz">
+<head>
+    {% load static %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Online Movies — Ro'yxat</title>
+<link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+<div class="container">
+<div class="header">
+<div class="brand">
+<div class="logo">OM</div>
+<div>
+<h2 style="margin:0">Online Movies</h2>
+<div style="color:var(--muted);font-size:13px">Sizning sevimli filmlaringiz</div>
+</div>
+</div>
+<div class="nav">
+<a class="button" style="color: azure;" href="{% url 'create' %}">+ Movie qo'shish</a>
+</div>
+</div>
+
+
+<div class="grid">
+<!-- Bitta film kartasi namunasi; backend bilan dinamik tarzda takrorlanadi -->
+ {% for movie in data  %}
+ <div class="card">
+<img class="poster" src="{{movie.image}}" alt="Poster">
+<h3>{{movie.title}}</h3>
+<div class="meta">{{movie.date}} · {{movie.genre}} · {{movie.duration}}</div>
+<p style="color:var(--muted);font-size:14px">{{movie.desc}}</p>
+<div class="actions">
+<a class="small-btn" href="{% url 'detail' movie.id %}">View</a>
+<a class="small-btn" href="{% url 'update' movie.id %}">Edit</a>
+<a class="small-btn" href="{% url 'delete' movie.id %}">Delete</a>
+</div>
+</div>
+
+ {% empty %}
+ <h1 style="font-size: large; color: red;">Sizda Kinolar Yoq </h1>
+ {% endfor %}
+
+
+<!-- Qo'shimcha kartalar... -->
+
+
+</div>
+
+
+<div class="footer">© Online Movies — barcha huquqlar himoyalangan</div>
+</div>
+</body>
+</html>
