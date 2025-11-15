@@ -16,7 +16,7 @@
           <h2 style="margin:0">Filmni o'chirish</h2>
         </div>
       </div>
-      <div class="nav"><a href="detail.html" class="small-btn">Orqaga</a></div>
+      <div class="nav"><a href="{% url 'home' %}" class="small-btn">Orqaga</a></div>
     </div>
 
     <div class="form-card">
@@ -28,15 +28,15 @@
       </div>
 
       <div style="margin-top:16px">
-        <p><strong>Movie Title</strong> — 2024 · Drama</p>
+        <p><strong>{{movie.title}}</strong> — {{movie.date}} · {{movie.genre}}</p>
 
         <div style="display:flex;gap:10px;justify-content:flex-end">
-          <a href="detail.html" class="small-btn">Bekor qilish</a>
+          <a href="{% url 'home' %}" class="small-btn">Bekor qilish</a>
 
           <!-- O'chirish formasi: backend yo'nalishini action-ga qo'ying (masalan /movies/123/delete) -->
-          <form action="#" method="post" style="display:inline" id="deleteForm">
+          <form action="{% url 'delete' movie.id %}" method="post" style="display:inline" id="deleteForm">
             <!-- Agar Django ishlatayotgan bo'lsangiz, shu yerga CSRF token qo'ying -->
-            <!-- {% csrf_token %} -->
+            {% csrf_token %}
 
             <button class="button" type="submit">Ha, o'chirish</button>
           </form>
@@ -47,13 +47,13 @@
   </div>
 
   <!-- Ixtiyoriy: formni yuborishdan oldin brauzer tasdiqlash oynasi -->
-  <script>
+  <!-- <script>
     document.getElementById('deleteForm').addEventListener('submit', function(e) {
       var ok = confirm("Siz rostdan ham filmni o'chirmoqchimisiz? Bu amal qaytarilmas bo'lishi mumkin.");
       if (!ok) {
         e.preventDefault();
       }
     });
-  </script>
+  </script> -->
 </body>
 </html>

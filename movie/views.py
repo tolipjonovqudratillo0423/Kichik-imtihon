@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect,get_object_or_404
 from .forms import MovieForm
+from django.http import HttpResponseForbidden
 from .models import Movie
 # Create your views here.
 
@@ -9,6 +10,9 @@ def index(request):
               }
     return render(request,'index.html',context=context)
 def update(request,id):
+    context = {
+        'movie': Movie.objects.get(id=id)
+    }
     if request.method == "POST":
         
         print("update form ishladi !!!")
@@ -30,11 +34,22 @@ def update(request,id):
             print(up_form.errors)
     else:
         print("Post method kelmadi")
+        return render(request,'update.html')
 
     
     return render(request,'update.html')
 def delete(request,id):
-    return render(request,'delete.html')
+    movie = get_object_or_404(Movie,id=id)
+    # if request.user != movie.author:
+    #      return HttpResponseForbidden("У вас нет прав для удаления этого фильма")
+    
+    if request.method == "POST":
+        movie.delete()
+        return redirect('home')
+    context = {
+        'movie': movie
+    }
+    return render(request,'delete.html',context=context)
 def detail(request,id):
     return render(request,'detail.html')
 def create(request):
@@ -54,7 +69,10 @@ def create(request):
                 genre = cr_form.cleaned_data.get('genre'),
                 # duration = cr_form.cleaned_data.get('duration'),
                 date = cr_form.cleaned_data.get('date'),
+                duration = cr_form.cleaned_data.get('duration'),
+                author = cr_form.cleaned_data.get('author')
             )
+            return redirect('home')
         else:
             print(" cr_form is INVALID")
             print(cr_form.errors)

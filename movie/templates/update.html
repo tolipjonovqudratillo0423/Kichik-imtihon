@@ -11,47 +11,59 @@
 <div class="container">
 <div class="header">
 <div class="brand"><div class="logo">OM</div><div><h2 style="margin:0">Filmni tahrirlash</h2></div></div>
-<div class="nav"><a href="detail.html" class="small-btn">Orqaga</a></div>
+<div class="nav"><a href="{% url 'home' %}" class="small-btn">Orqaga</a></div>
 </div>
 
 
 <div class="form-card">
-<form action="#" method="post" enctype="multipart/form-data">
-<!-- Bu yerda qiymatlar serverdan kelib form maydonlariga value sifatida tushadi -->
+<form action="{% url 'create' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+   
 <div class="form-row">
 <div class="field">
 <label for="title">Sarlavha</label>
-<input id="title" name="title" type="text" value="Movie Title" required>
+<input id="title" name="title" placeholder="Marvel" type="text" required>
 </div>
 <div class="field">
-<label for="year">Yil</label>
-<input id="year" name="year" type="number" min="1888" max="2100" value="2024">
+<label for="year">Chiqarilgan Sana</label>
+<input id="year" placeholder="DD.MM.YYYY" name="date" type="date" >
 </div>
 </div>
 
 
 <div class="field">
 <label for="genre">Janr</label>
-<input id="genre" name="genre" type="text" value="Drama">
+<input id="genre" placeholder="drama" name="genre" type="text">
 </div>
 
 
 <div class="field">
-<label for="desc">Tavsif</label>
-<textarea id="desc" name="description">Oldingi tavsif shu yerda...</textarea>
+<label for="desc">Tavsif </label>
+<textarea id="desc" placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta eos a repellendus quidem, officia amet laborum esse necessitatibus eius ipsam expedita neque consectetur libero aliquid iure modi. Repellat, officia quod." name="desc"></textarea>
+</div>
+<div class="field">
+<label for="author"> Author </label>
+<input  placeholder="Author" name="author" type="text">
+
+</div>
+
+<div class="field">
+<label for="duration"> Duration </label>
+<input  placeholder="Duration example : " name="duration" type="time">
+
 </div>
 
 
+
 <div class="field">
-<label for="poster">Poster (rasm) — yangi yuklash ixtiyoriy</label>
-<input id="poster" name="poster" type="file" accept="image/*">
+<label for="poster">Poster (rasm)</label>
+<input id="poster"  name="image" type="file" >
 </div>
 
 
 <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:12px">
-<a href="detail.html" class="small-btn">Bekor qilish</a>
-<button class="button" type="submit">O'zgartirishni saqlash</button>
-</div>
+<a href="{% url 'home' %}" class="small-btn">Bekor qilish</a>
+<button class="button" type="submit">Saqlash</button>
+</div> 
 </form>
 </div>
 </div>
