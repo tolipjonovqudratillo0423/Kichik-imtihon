@@ -16,39 +16,39 @@
 
 
 <div class="form-card">
-<form action="{% url 'create' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+<form action="{% url 'update' movie.id %}" method="post" enctype="multipart/form-data">{% csrf_token %}
    
 <div class="form-row">
 <div class="field">
 <label for="title">Sarlavha</label>
-<input id="title" name="title" placeholder="Marvel" type="text" required>
+<input id="title" name="title" value="{{movie.title}}" type="text" required>
 </div>
 <div class="field">
 <label for="year">Chiqarilgan Sana</label>
-<input id="year" placeholder="DD.MM.YYYY" name="date" type="date" >
+<input id="year" value="{{movie.date}}" name="date" type="date" >
 </div>
 </div>
 
 
 <div class="field">
 <label for="genre">Janr</label>
-<input id="genre" placeholder="drama" name="genre" type="text">
+<input id="genre" value="{{movie.genre}}" name="genre" type="text">
 </div>
 
 
 <div class="field">
 <label for="desc">Tavsif </label>
-<textarea id="desc" placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta eos a repellendus quidem, officia amet laborum esse necessitatibus eius ipsam expedita neque consectetur libero aliquid iure modi. Repellat, officia quod." name="desc"></textarea>
+<textarea id="desc" value="{{movie.desc}}" name="desc"></textarea>
 </div>
 <div class="field">
 <label for="author"> Author </label>
-<input  placeholder="Author" name="author" type="text">
+<input  value="{{movie.author}}" name="author" type="text">
 
 </div>
 
 <div class="field">
 <label for="duration"> Duration </label>
-<input  placeholder="Duration example : " name="duration" type="time">
+<input  pvalue="{{movie.duration}}" name="duration" type="time">
 
 </div>
 

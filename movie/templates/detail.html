@@ -10,30 +10,30 @@
 <body>
 <div class="container">
 <div class="header">
-<div class="brand"><div class="logo">OM</div><div><h2 style="margin:0">Movie Title</h2><div style="color:var(--muted);font-size:13px">2024 · Drama</div></div></div>
-<div class="nav"><a href="{% url 'home' %}" class="small-btn">Ro'yxat</a></div>
+<div class="brand"><div class="logo">OM</div><div><h2 style="margin:0">{{movie.title}}</h2><div style="color:var(--muted);font-size:13px">2024 · Drama</div></div></div>
+<div class="nav"><a href="{% url 'home' %}" class="small-btn">Back</a></div>
 </div>
 
 
 <div class="detail-wrap">
-<img class="poster-large" src="https://via.placeholder.com/600x900?text=Poster" alt="Poster">
+<img class="poster-large" src="{{movie.image.url}}" alt="Poster">
 
 
 <div>
 <h3>Tavsif</h3>
-<p style="color:var(--muted)">Bu yerda filmning to'liq tavsifi bo'ladi. Yaratilgan yili, rejissyor, akterlar va boshqa meta ma'lumotlar shu yerda joylashadi.</p>
+<p style="color:var(--muted)">{{movie.desc}}</p>
 
 
-<div class="attr"><strong>Rejissyor:</strong> Ism Familiya</div>
-<div class="attr"><strong>Akterlar:</strong> Aktyor1, Aktyor2</div>
-<div class="attr"><strong>Muddat:</strong> 2h 10m</div>
+<div class="attr"><strong>Rejissyor:</strong> {{movie.author}}</div>
+
+<div class="attr"><strong>Muddat:</strong> {{movie.duration}} soat</div>
 
 
 <div style="margin-top:18px">
-<a href="{% url 'update' %}" class="small-btn">Edit</a>
-<a href="{% url 'delete' %}" class="small-btn">Delete</a>
+<a href="{% url 'update' movie.id %}" class="small-btn">Edit</a>
+<a href="{% url 'delete' movie.id %}" class="small-btn">Delete</a>
 </div>
-</div>
+</div>  
 </div>
 
 
