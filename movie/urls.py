@@ -8,5 +8,6 @@ urlpatterns = [
     path('delete/<int:id>/',delete,name='delete'),
     path('register/',register,name='register'),
     path('login/',login,name='login'),
+    path('error/',error,name="error")
     
 ]

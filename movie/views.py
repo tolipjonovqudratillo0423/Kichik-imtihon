@@ -68,3 +68,5 @@ def register(request):
     return render(request,'register.html')
 def login(request):
     return render(request,'login.html')
+def error(request):
+    return render(request,'error.html')
